@@ -1,0 +1,9 @@
+{
+  "name": "shellbound",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "An original terminal adventure for learning fifty Linux commands",
+  "scripts": { "start": "node server.js", "test": "node --test" },
+  "engines": { "node": ">=22" }
+}

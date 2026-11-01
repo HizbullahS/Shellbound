@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#101a19" />
+    <meta
+      name="description"
+      content="An original terminal adventure. Explore ten regions, restore a forgotten beacon, and learn fifty Linux commands by doing."
+    />
+    <title>Shellbound — The Beacon Beyond</title>
+    <link rel="icon" href="./favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="./style.css" />
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <div class="sky-noise" aria-hidden="true"></div>
+    <header>
+      <a href="./" class="brand"
+        ><span class="brand-symbol">⌘</span> SHELLBOUND
+        <span class="brand-sub">THE BEACON BEYOND</span></a
+      >
+      <div class="header-meta">
+        <span class="online-dot"></span> A TERMINAL ADVENTURE
+        <button id="about-open" aria-label="About the game">?</button>
+      </div>
+    </header>
+    <main>
+      <section class="intro">
+        <div>
+          <p class="eyebrow">AN ENTIRE WORLD, ONE COMMAND AT A TIME.</p>
+          <h1>There’s a light<br />worth <em>finding.</em></h1>
+          <p class="intro-copy">
+            Explore the forgotten coast. Help its people.<br />Learn the
+            language that brings it back to life.
+          </p>
+        </div>
+        <div class="expedition-label">
+          <span>YOUR EXPEDITION</span
+          ><strong id="progress-top">00 <small>/ 50</small></strong>
+          <div class="progress-bar"><div id="progress-fill"></div></div>
+          <span id="save-state">SAVED ON THIS DEVICE</span>
+        </div>
+      </section>
+      <section class="game-shell" aria-label="Terminal adventure">
+        <div class="window-bar">
+          <div>
+            <i></i><i></i><i></i
+            ><span>traveler@beacon <b>~</b> /bin/bash · simulated</span>
+          </div>
+          <span class="window-tag">NO REAL SYSTEM ACCESS</span>
+        </div>
+        <div class="game-grid">
+          <section class="terminal-pane" aria-label="Game terminal">
+            <div
+              id="terminal"
+              role="log"
+              aria-label="Adventure transcript"
+              aria-live="polite"
+              tabindex="0"
+            ></div>
+            <div class="input-wrap">
+              <form id="command-form" autocomplete="off">
+                <label id="prompt" for="command-input"
+                  >traveler@beacon:~ $</label
+                ><input
+                  id="command-input"
+                  aria-label="Terminal command"
+                  autocomplete="off"
+                  autocapitalize="off"
+                  spellcheck="false"
+                  enterkeyhint="send"
+                /><button type="submit" aria-label="Run command">↵</button>
+              </form>
+              <div class="terminal-hints">
+                <span>↑↓ HISTORY <b>·</b> TAB COMPLETE</span
+                ><span id="terminal-state">READY WHEN YOU ARE</span>
+              </div>
+            </div>
+          </section>
+          <aside class="world-pane">
+            <div class="location-top">
+              <span id="chapter-label">CHAPTER 01 / 10</span
+              ><span class="location-pin">◇</span>
+            </div>
+            <div id="scene" class="scene" aria-hidden="true"></div>
+            <div class="location-description">
+              <span class="eyebrow" id="region-topic">NAVIGATION</span>
+              <h2 id="region-name">Haven</h2>
+              <p id="region-title">The waking shore</p>
+            </div>
+            <div class="quest-summary">
+              <span class="small-label">CURRENT THREAD</span>
+              <h3 id="task-title"></h3>
+              <p id="task-goal"></p>
+              <button id="hint-button">Need a nudge? <span>↗</span></button>
+            </div>
+            <div
+              class="chapter-dots"
+              id="chapter-dots"
+              aria-label="Chapter progress"
+            ></div>
+            <p class="sidebar-note">
+              The world is your filesystem.<br />Commands are how you change it.
+            </p>
+          </aside>
+        </div>
+        <nav class="game-toolbar" aria-label="Game tools">
+          <div>
+            <button data-tool="quest">☷ Journal</button
+            ><button data-panel="map">⌁ World map</button
+            ><button data-panel="codex">⌘ Command book</button>
+          </div>
+          <div>
+            <button data-tool="help">Help</button
+            ><button id="restart-open">New expedition ↗</button>
+          </div>
+        </nav>
+      </section>
+      <div class="below-game">
+        <p><span>↳</span> Read the world. Try a command. See what changes.</p>
+        <span>10 REGIONS <b>·</b> 50 COMMANDS <b>·</b> YOUR OWN PACE</span>
+      </div>
+      <footer>
+        <p>An original adventure inspired by learning through exploration.</p>
+        <button id="sources-open">Inspiration & simulation notes ↗</button>
+      </footer>
+    </main>
+    <dialog id="panel-dialog">
+      <button class="dialog-close" data-close aria-label="Close panel">
+        ×
+      </button>
+      <div id="panel-content"></div>
+    </dialog>
+    <dialog id="restart-dialog">
+      <p class="eyebrow">A FRESH START</p>
+      <h2>Begin another expedition?</h2>
+      <p>
+        This replaces your saved game on this browser. Your current progress and
+        virtual files will be reset.
+      </p>
+      <div class="dialog-actions">
+        <button data-close>Keep exploring</button
+        ><button id="confirm-restart" class="primary">Begin again ↗</button>
+      </div>
+    </dialog>
+    <dialog id="pager-dialog">
+      <div class="pager-heading">
+        <span id="pager-label">PAGER · SCROLL TO READ</span
+        ><button id="pager-close">q · return</button>
+      </div>
+      <pre id="pager-content" tabindex="0"></pre>
+      <p>↑↓ or Space to scroll · q or Escape to return to the terminal</p>
+    </dialog>
+  </body>
+</html>
